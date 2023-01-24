@@ -1,4 +1,5 @@
 <?php include "includes/admin_header.php"; ?>
+<?php include "functions.php"; ?>
 <?php include "../includes/db.php"; ?>
 
     <div id="wrapper">
@@ -18,14 +19,28 @@
                             <small>Author</small>
                         </h1>
                         <div class="col-xs-6">
-                           <form action="">
+                           <?php insert_categories();?>
+
+                           <form action="categories.php" method="post">
                               <div class="form-group">
+                                 <label for="cat_title">Add Category</label>
                                  <input class="form-control" type="text" name="cat_title" id="">
                               </div>
                               <div class="form-group">
                                  <input class="btn btn-primary" type="submit" name="submit" id="" value="Add Category">
                               </div>
                            </form>
+                           <hr>
+
+                           <?php
+                           
+                              if(isset($_GET['edit'])){
+                                 $cat_id = $_GET['edit'];
+                                 include "includes/edit_categories.php";
+                              }
+                           
+                           ?>
+
                         </div>
                         <!-- <ol class="breadcrumb">
                            <li>
@@ -36,27 +51,26 @@
                            </li>
                         </ol> -->
                         <div class="col-xs-6">
-                           <?php
-                              $query = "SELECT * FROM categories";
-                              $select_categories = mysqli_query($connection, $query);
-                           ?>
+
                            <table class="table table-bordered table-hover">
                               <thead>
                                  <tr>
                                     <th>ID</th>
                                     <th>Category Title</th>
+                                    <th>Deleting</th>
+                                    <th>Updating</th>
                                  </tr>
                               </thead>
                               <tbody>
                                  <?php
-                                    while($row = mysqli_fetch_assoc($select_categories)){
-                                       $cat_id = $row['cat_id'];
-                                       $cat_title = $row['cat_title'];
 
-                                       echo "<tr>";
-                                       echo "<td>{$cat_id}</td>";
-                                       echo "<td>{$cat_title}</td>";
-                                       echo "</tr>";
+                                 ?>
+                                 <?php
+                                    if(isset($_GET['delete'])){
+                                       $the_cat_id = $_GET['delete'];
+                                       $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id}";
+                                       $delete_query = mysqli_query($connection, $query);
+                                       header("Location: categories.php");
                                     }
                                  ?>
                                  <!-- <tr>
@@ -69,7 +83,6 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
 
