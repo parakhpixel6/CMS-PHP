@@ -19,9 +19,9 @@
                             <small>Author</small>
                         </h1>
                         <div class="col-xs-6">
-                           <?php insert_categories();?>
+                           <?php insertCategories();?>
 
-                           <form action="categories.php" method="post">
+                           <form action="" method="post">
                               <div class="form-group">
                                  <label for="cat_title">Add Category</label>
                                  <input class="form-control" type="text" name="cat_title" id="">
@@ -32,14 +32,7 @@
                            </form>
                            <hr>
 
-                           <?php
-                           
-                              if(isset($_GET['edit'])){
-                                 $cat_id = $_GET['edit'];
-                                 include "includes/edit_categories.php";
-                              }
-                           
-                           ?>
+                           <?php editCategories();?>
 
                         </div>
                         <!-- <ol class="breadcrumb">
@@ -63,15 +56,10 @@
                               </thead>
                               <tbody>
                                  <?php
-
+                                    findAllCategories();
                                  ?>
                                  <?php
-                                    if(isset($_GET['delete'])){
-                                       $the_cat_id = $_GET['delete'];
-                                       $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id}";
-                                       $delete_query = mysqli_query($connection, $query);
-                                       header("Location: categories.php");
-                                    }
+                                    deleteCategories();
                                  ?>
                                  <!-- <tr>
                                     <td>Drama</td>
