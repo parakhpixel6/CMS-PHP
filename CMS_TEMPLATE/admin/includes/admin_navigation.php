@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="index.html">CMS Admin</a>
+         <a class="navbar-brand" href="index.php">CMS Admin</a>
    </div>
    <!-- Top Menu Items -->
    <ul class="nav navbar-right top-nav">
@@ -123,7 +123,7 @@
                <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Profile</a>
             </li>
             <li>
-               <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+               <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <!-- <li>
                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -141,7 +141,7 @@
                         <a href="./posts.php">View All Posts</a>
                      </li>
                      <li>
-                        <a href="#">Add Posts</a>
+                        <a href="posts.php?source=add_post">Add Posts</a>
                      </li>
                </ul>
             </li>
@@ -150,7 +150,7 @@
             </li>
 
             <li class="">
-               <a href="#"><i class="fa fa-fw fa-file"></i> Comment</a>
+               <a href="./comments.php"><i class="fa fa-fw fa-file"></i> Comment</a>
             </li>
             <li>
                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
